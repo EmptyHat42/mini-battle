@@ -1,0 +1,15 @@
+C:\Users\Tomas\Desktop\School\Mini-Battle\mini-battle\bin\Debug\net10.0\mini-battle.exe
+C:\Users\Tomas\Desktop\School\Mini-Battle\mini-battle\bin\Debug\net10.0\mini-battle.deps.json
+C:\Users\Tomas\Desktop\School\Mini-Battle\mini-battle\bin\Debug\net10.0\mini-battle.runtimeconfig.json
+C:\Users\Tomas\Desktop\School\Mini-Battle\mini-battle\bin\Debug\net10.0\mini-battle.dll
+C:\Users\Tomas\Desktop\School\Mini-Battle\mini-battle\bin\Debug\net10.0\mini-battle.pdb
+C:\Users\Tomas\Desktop\School\Mini-Battle\mini-battle\obj\Debug\net10.0\mini-battle.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Tomas\Desktop\School\Mini-Battle\mini-battle\obj\Debug\net10.0\mini-battle.AssemblyInfoInputs.cache
+C:\Users\Tomas\Desktop\School\Mini-Battle\mini-battle\obj\Debug\net10.0\mini-battle.AssemblyInfo.cs
+C:\Users\Tomas\Desktop\School\Mini-Battle\mini-battle\obj\Debug\net10.0\mini-battle.csproj.CoreCompileInputs.cache
+C:\Users\Tomas\Desktop\School\Mini-Battle\mini-battle\obj\Debug\net10.0\mini-battle.sourcelink.json
+C:\Users\Tomas\Desktop\School\Mini-Battle\mini-battle\obj\Debug\net10.0\mini-battle.dll
+C:\Users\Tomas\Desktop\School\Mini-Battle\mini-battle\obj\Debug\net10.0\refint\mini-battle.dll
+C:\Users\Tomas\Desktop\School\Mini-Battle\mini-battle\obj\Debug\net10.0\mini-battle.pdb
+C:\Users\Tomas\Desktop\School\Mini-Battle\mini-battle\obj\Debug\net10.0\mini-battle.genruntimeconfig.cache
+C:\Users\Tomas\Desktop\School\Mini-Battle\mini-battle\obj\Debug\net10.0\ref\mini-battle.dll
