@@ -10,34 +10,12 @@ if (playerName == "")
 }
 Console.WriteLine("\nWelcome to the fight soldier " + playerName + "!\nAre you ready to bonk a bad guy?! (y/n)");
 
-///////////////////////////////////////
-/// TWEAK COMBAT STATS UNDER HERE! ////
-///////////////////////////////////////
-//Fully optional btw don't yell at me//
-//Should be balanced as they are     //
-//(I hope...)                        //
-///////////////////////////////////////
-
-// PLAYER //
-int playerHealth = 100;
-int playerAtkDmg = 10;
-int playerHealPwr = 20;
-
-// ENEMY //
-int enemyHealth = 200;
-int enemyAtkDmg = 15;
-int enemyHealPwr = 10;
-
-///////////////////////////////////////
-
-Player player = new Player(playerName, playerHealth, playerAtkDmg, playerHealPwr);
-Enemy enemy = new Enemy("Mr. Bad Evil Man Guy", enemyHealth, enemyAtkDmg, enemyHealPwr);
-
 bool ready = false;
 int answerCount = 1;
 
 while (!ready)
 {
+    // Makes us only have to press a key to choose and not show the key pressed //
     char areYouReady = Console.ReadKey(true).KeyChar;
     switch (areYouReady)
     {
@@ -73,20 +51,58 @@ while (!ready)
     }
 }
 
-// For the border to work no matter the length of enemy.name //
-string combatMsg = $"!! {enemy.name} has suddenly appeared !!";
-string msgBorder = new string('!', combatMsg.Length);
-Console.WriteLine($"""
-
-{msgBorder}
-{combatMsg}
-{msgBorder}
-""");
-
-bool winOrLose = false;
-while (!winOrLose)
+bool weFighting = true;
+while (weFighting)
 {
+    ///////////////////////////////////////
+    /// TWEAK COMBAT STATS UNDER HERE!  ///
+    ///////////////////////////////////////
+    //Fully optional btw don't yell at me//
+    //Should be balanced as they are     //
+    //(I hope...)                        //
+    //                                   //
+    //(name, maxHp, atkDmg, healPwr)     //
+    ///////////////////////////////////////
 
+    // PLAYER //
+    Player player = new Player(playerName, 100, 10, 20);
+
+    // ENEMY //
+    Enemy enemy = new Enemy("Mr. Bad Evil Man Guy", 200, 15, 10);
+
+    ///////////////////////////////////////
+
+    // For the border to work no matter the length of enemy.name //
+    string combatMsg = $"!! {enemy.name} has suddenly appeared !!";
+    string msgBorder = new string('!', combatMsg.Length);
+    Console.WriteLine($"\n{msgBorder}\n{combatMsg}\n{msgBorder}\n");
+
+    Console.WriteLine($"I guess you can go first since {playerName} is such an incredible name!");
+    bool battle = true;
+    while (battle)
+    {
+        if (player.currentHp <= 0)
+        {
+            Console.WriteLine("It seems you weren't strong enough...\nThis means i don't have to pay you hehehe.\nYou have died... try again? (y/n)");
+            battle = false;
+            weFighting = TryAgain.Lose();
+        }
+        player.TakeTurn(enemy);
+        player.ShowHp();
+        enemy.ShowHp();
+
+        if (enemy.currentHp <= 0)
+        {
+            Console.WriteLine($"Holy shit i was sure you were gonna die! Damnit now i have to pay y...\nI mean... Congratulations on slaying {enemy.name}!!!\nWant to fight them again? Double or nothing? (y/n)");
+            battle = false;
+            weFighting = TryAgain.Win();
+        }
+        enemy.TakeTurn(player);
+        player.ShowHp();
+        enemy.ShowHp();
+    }
 }
+
+Console.WriteLine("Thank you so much for playing Mini-Battle!\nPress any key to close the program.");
 
 Console.ReadKey();

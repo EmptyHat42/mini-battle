@@ -8,8 +8,13 @@ public static class DiceRoll
 
     public static int rollTheDice()
     {
-        int dTwenty = dice.Next(1, 21);
-        return dTwenty;
+        int dSix = dice.Next(1, 7);
+        return dSix;
+    }
+    public static int atkOrHeal()
+    {
+        int action = dice.Next(1, 10);
+        return action;
     }
     
 }

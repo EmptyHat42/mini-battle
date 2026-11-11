@@ -19,5 +19,19 @@ abstract public class Character
         this.atkDmg = atkDmg;
         this.healPwr = healPwr;
     }
-    public abstract void TakeTurn();
+    public abstract void TakeTurn(Character atkTarget);
+
+    public void TakeDamage(int dmg)
+    {
+        currentHp -= dmg;
+        if (currentHp < 0)
+        {
+            currentHp = 0;
+        }
+    }
+
+    public void ShowHp()
+    {
+        Console.WriteLine($"{name} HP: {currentHp}/{maxHp}\n");
+    }
 }
