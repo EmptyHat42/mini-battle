@@ -29,9 +29,9 @@ abstract public class Character
             currentHp = 0;
         }
     }
-
-    public void ShowHp()
+    
+    public string ShowHp()
     {
-        Console.WriteLine($"{name} HP: {currentHp}/{maxHp}\n");
+        return $"{name} HP: {currentHp}/{maxHp}";
     }
 }

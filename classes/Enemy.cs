@@ -12,71 +12,96 @@ public class Enemy : Character
 
     }
 
+    private bool rageModeActive = false;
+    private void RageMode()
+    {
+        if (currentHp <= maxHp / 2 && !rageModeActive)
+        {
+            atkDmg *= 2;
+            rageModeActive = true;
+
+            Textflow.ShowBorder("Holy shit you pissed him off! He's enetering rage mode!", '!');
+        }
+    }
+
+
     public override void TakeTurn(Character atkTarget)
     {
-        Console.WriteLine("It's the enemies turn! Do they attack or heal?");
+        RageMode();
+
+        Textflow.RollingText("\nIt's the enemies turn! Do they attack or heal?", 10);
         int action = DiceRoll.atkOrHeal();
         int critOrNah = DiceRoll.rollTheDice();
-        //Thread.Sleep(1000);
-        Console.WriteLine("\nThinking...\n");
-        //Thread.Sleep(3000);
+        Textflow.RollingText("\nThinking", 25, false);
+        Textflow.Dots(450);
+        Console.WriteLine("");
         if (action == 1)
         {
-            Console.WriteLine($"Haha! {name} slipped and took 10 damage! What an idiot!\n");
+            Textflow.RollingText($"\nHaha! {name} slipped and took 10 damage! What an idiot!\n", 10);
             currentHp -= 10;
+            Thread.Sleep(100);
         }
         else if (action == 2 || action == 3)
         {
-            Console.WriteLine($"{name} missed and hit the rock next to you.\nIt didn't seem to bother them though...\n");
+            Textflow.RollingText($"\n{name} missed and hit the rock next to you.\nIt didn't seem to bother them though...\n", 10);
+            Thread.Sleep(100);
         }
         else if (action > 3 && action <= 6)
         {
-            Console.WriteLine($"{name} is trying to heal themselves...");
-            //Thread.Sleep(2000);
+            Textflow.RollingText($"\n{name} is trying to heal themselves", 10);
+            Textflow.Dots(250);
             if (currentHp == maxHp)
             {
-                Console.WriteLine($"{name} must be dumb! They tried to heal with full hp!\nTheir turn was wasted.\n");
+                Textflow.RollingText($"\n{name} must be dumb! They tried to heal with full hp!\nTheir turn was wasted.\n", 10);
             }
             else if (critOrNah == 1)
             {
-                Console.WriteLine($"{name} coughed in the middle of casting and it did nothing.\n");
+                Textflow.RollingText($"\n{name} coughed in the middle of casting and it did nothing.\n", 10);
             }
             else if (critOrNah == 6)
             {
                 if (currentHp + healPwr * 2 >= maxHp)
                 {
-                    Console.WriteLine($"Dangit! {name} healed with extra sparkles!\nThey're back to full HP!\n");
+                    Textflow.ShowBorder($"Dangit! {name} healed with extra sparkles! They're back to full HP!", '!');
                     currentHp = maxHp;
                 }
                 else
                 {
-                    Console.WriteLine($"{name} must have connections with heaven.\nThey healed {healPwr * 2} HP.\n");
+                    Textflow.ShowBorder($"{name} must have connections with heaven. They healed for {healPwr * 2} HP.", '!');
                     currentHp += healPwr * 2;
                 }
             }
             else
             {
-                Console.WriteLine($"{name} succesfully healed for {healPwr} HP.\n");
-                currentHp += healPwr;
+                if (currentHp + healPwr >= maxHp)
+                {
+                    Textflow.RollingText($"\n{name} succesfully healed and they're back to full HP!\n", 10);
+                    currentHp = maxHp;
+                }
+                else
+                {
+                    Textflow.RollingText($"\n{name} succesfully healed for {healPwr} HP.\n", 10);
+                    currentHp += healPwr;
+                }
             }
         }
         else
         {
-            Console.WriteLine($"{name} is attacking! Watch out!");
-            //Thread.Sleep(2000);
+            Textflow.RollingText($"\n{name} is attacking! Watch out!", 10);
+            Textflow.Dots(250);
             if (critOrNah == 1)
             {
-                Console.WriteLine($"{name} barely grazed your torso.\nStill hurts though...\nYou take {atkDmg / 2} damage.");
+                Textflow.RollingText($"\n{name} barely grazed your torso.\nStill hurts though...\nYou take {atkDmg / 2} damage.\n", 10);
                 atkTarget.TakeDamage(atkDmg / 2);
             }
             else if (critOrNah == 6)
             {
-                Console.WriteLine($"Did you get Critically hit on purpose?!\nYou take {atkDmg * 2} damage.");
+                Textflow.ShowBorder($"OUCH! That one REALLY hurt! You take {atkDmg * 2} damage.", '!');
                 atkTarget.TakeDamage(atkDmg * 2);
             }
             else
             {
-                Console.WriteLine($"It's a hit!\nYou take {atkDmg} damage.");
+                Textflow.RollingText($"\nIt's a hit!\nYou take {atkDmg} damage.\n", 10);
                 atkTarget.TakeDamage(atkDmg);
             }
         }

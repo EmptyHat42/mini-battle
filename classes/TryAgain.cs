@@ -13,13 +13,13 @@ public static class TryAgain
             switch (tryAgain)
             {
                 case 'y':
-                    Console.WriteLine("Oh wow, really...? Well... it's your funeral!");
+                    Textflow.RollingText("Oh wow, really...? Well... it's your funeral!");
                     return true;
                 case 'n':
-                    Console.WriteLine("Wow okay... Take your money and get out of here!");
+                    Textflow.RollingText("Wow okay... Take your money and get out of here!");
                     return false;
                 default:
-                    Console.WriteLine("Was something unclear? Do you want to fight again? (y/n)");
+                    Textflow.RollingText("Was something unclear? Do you want to fight again? (y/n)");
                     break;
             }
         }
@@ -33,13 +33,13 @@ public static class TryAgain
             switch (tryAgain)
             {
                 case 'y':
-                    Console.WriteLine("Good on you! One more try!");
+                    Textflow.RollingText("Good on you! One more try!");
                     return true;
                 case 'n':
-                    Console.WriteLine("Oh okay i guess we just let them kill everyone i guess...!");
+                    Textflow.RollingText("Oh okay i guess we just let them kill everyone...!");
                     return false;
                 default:
-                    Console.WriteLine("Was something unclear? Do you want to fight again? (y/n)");
+                    Textflow.RollingText("Was something unclear? Do you want to fight again? (y/n)");
                     break;
             }
         }

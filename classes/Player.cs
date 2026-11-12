@@ -11,7 +11,7 @@ public class Player : Character
     }
     public override void TakeTurn(Character atkTarget)
     {
-        Console.WriteLine("Your turn! Do you attack or heal? (a/h)");
+        Textflow.RollingText($"\n{name}'s turn! Do you attack or heal? (a/h)", 10);
         bool turn = true;
         while (turn)
         {
@@ -23,17 +23,18 @@ public class Player : Character
                     int atkRoll = DiceRoll.rollTheDice();
                     if (atkRoll == 1)
                     {
-                        Console.WriteLine("Yikes! You missed entirely!");
+                        Textflow.RollingText($"\nYikes! {name} missed entirely!\n", 10);
                     }
                     else if (atkRoll == 6)
                     {
                         atkTarget.TakeDamage(atkDmg * 3);
-                        Console.WriteLine($"Critical Hit! You dealt {atkDmg * 2} damage! Boom!");
+
+                        Textflow.ShowBorder($"Critical Hit! {name} dealt {atkDmg * 3} damage!", '#');
                     }
                     else
                     {
                         atkTarget.TakeDamage(atkDmg);
-                        Console.WriteLine($"Hit! You dealt {atkDmg} damage!");
+                        Textflow.RollingText($"\nHit! {name} dealt {atkDmg} damage!\n", 10);
                     }
                     turn = false;
                     break;
@@ -42,7 +43,7 @@ public class Player : Character
 
                     if (currentHp == maxHp)
                     {
-                        Console.WriteLine("\n How silly of you! You're already full HP!\nDo you want to attack or heal?");
+                        Textflow.RollingText($"\n How silly of you! {name} is already full HP!\nDo you want to attack or heal?\n", 10);
                     }
                     else
                     {
@@ -51,25 +52,25 @@ public class Player : Character
                         {
                             if (currentHp + healPwr / 2 >= maxHp)
                             {
-                                Console.WriteLine($"You messed up the spell really bad.\nSomehow you're now full HP though...");
+                                Textflow.RollingText($"\n{name} messed up the spell really bad.\nSomehow {name} is full HP now though...\n", 10);
                                 currentHp = maxHp;
                             }
                             else
                             {
-                                Console.WriteLine($"Your tongue twisted and you only healed {healPwr / 2} HP.");
+                                Textflow.RollingText($"\n{name}'s tongue twisted and only healed for {healPwr / 2} HP.\n", 10);
                                 currentHp += healPwr / 2;
                             }
                         }
                         else if (healRoll == 6)
                         {
-                            if (currentHp + healPwr * 2 >= maxHp)
+                            if (currentHp + healPwr * 3 >= maxHp)
                             {
-                                Console.WriteLine("The god's themselves have blessed your spell!\nYou're now full HP.");
+                                Textflow.ShowBorder($"The gods themselves have blessed {name}'s spell! They're now full HP.", '#');
                                 currentHp = maxHp;
                             }
                             else
                             {
-                                Console.WriteLine($"Holy power washes over you and you heal for {healPwr * 3}!");
+                                Textflow.ShowBorder($"Holy power washes over {name} and they heal for {healPwr * 3}!", '#');
                                 currentHp += healPwr * 3;
                             }
                         }
@@ -77,12 +78,12 @@ public class Player : Character
                         {
                             if (currentHp + healPwr >= maxHp)
                             {
-                                Console.WriteLine("You're now full HP.");
+                                Textflow.RollingText($"\n{name} is now full HP.\n", 10);
                                 currentHp = maxHp;
                             }
                             else
                             {
-                                Console.WriteLine($"You heal yourself for {healPwr} HP!");
+                                Textflow.RollingText($"\n{name} heals themselves for {healPwr} HP!\n", 10);
                                 currentHp += healPwr;
                             }
                         }
@@ -91,7 +92,7 @@ public class Player : Character
                     break;
 
                 default:
-                    Console.WriteLine("You don't have time to mess around! Do you want to attack or heal? (a/h)");
+                    Textflow.RollingText("\nYou don't have time to mess around! Do you want to attack or heal? (a/h)\n", 10);
                     break;
             }
         }
