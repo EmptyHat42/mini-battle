@@ -112,7 +112,7 @@ while (weFighting)
             Textflow.ShowBorder($"{player.name} has died! You Lost!", '-');
             Textflow.RollingText($"It seems {player.name} wasn't strong enough", 25, false);
             Textflow.Dots(700);
-            Textflow.RollingText("\nThis means i don't have to pay you hehehe.\nYou have died... try again? (y/n)\n");
+            Textflow.RollingText("\nThis means I don't have to pay you hehehe.\nYou have died... try again? (y/n)\n");
             weFighting = TryAgain.Lose();
             break;
         }
@@ -123,7 +123,7 @@ while (weFighting)
         if (enemy.currentHp <= 0)
         {
             Textflow.ShowBorder($"{playerName} has defeated {enemy.name}! You Win!", '+');
-            Textflow.RollingText($"Holy shit i was sure {player.name} was gonna die! Damnit now i have to pay y", 25, false);
+            Textflow.RollingText($"Holy shit I was sure {player.name} was gonna die! Damnit now I have to pay y", 25, false);
             Textflow.Dots(700);
             Textflow.RollingText($"\nI mean... Congratulations on slaying {enemy.name}!!!\nWant to fight them again? Double or nothing? (y/n)\n");
             weFighting = TryAgain.Win();

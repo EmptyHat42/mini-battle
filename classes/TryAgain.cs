@@ -36,7 +36,7 @@ public static class TryAgain
                     Textflow.RollingText("Good on you! One more try!");
                     return true;
                 case 'n':
-                    Textflow.RollingText("Oh okay i guess we just let them kill everyone...!");
+                    Textflow.RollingText("Oh okay I guess we just let them kill everyone...!");
                     return false;
                 default:
                     Textflow.RollingText("Was something unclear? Do you want to fight again? (y/n)");
