@@ -2,13 +2,14 @@ using System;
 
 namespace mini_battle.classes;
 
+// Class for handling if we want to play again or not after winning/losing //
 public static class TryAgain
 {
 
     public static bool Win()
     {
         while (true)
-        {
+        {   
             char tryAgain = Console.ReadKey(true).KeyChar;
             switch (tryAgain)
             {

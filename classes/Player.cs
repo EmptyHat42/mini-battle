@@ -9,6 +9,14 @@ public class Player : Character
     {
 
     }
+    /*
+    Player method for taking a turn.
+
+    As you can see we only check for the value of the dice rolls here
+    and multiply attack/healing values after the fact based on if it's
+    a player or an enemy.
+    The dice rolls only dictate if it's a Hit/Miss/Crit/etc.
+    */
     public override void TakeTurn(Character atkTarget)
     {
         Textflow.RollingText($"\n{name}'s turn! Do you attack or heal? (a/h)", 10);

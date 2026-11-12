@@ -13,6 +13,7 @@ public class Enemy : Character
     }
 
     private bool rageModeActive = false;
+    // Method for rage mode. Makes sure it doesn't run again if it's already active //
     private void RageMode()
     {
         if (currentHp <= maxHp / 2 && !rageModeActive)
@@ -24,7 +25,18 @@ public class Enemy : Character
         }
     }
 
+    /*
+    Enemy method for taking a turn.
 
+    Largely the same as Player except it runs automatically with no input
+
+    As you can see we only check for the value of the dice rolls here
+    and multiply attack/healing values after the fact based on if it's
+    a player or an enemy.
+    The dice rolls only dictate if it's a Hit/Miss/Crit/etc.
+
+    There's also some extra thread.sleeping for added effect.
+    */
     public override void TakeTurn(Character atkTarget)
     {
         RageMode();

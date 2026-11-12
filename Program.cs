@@ -3,6 +3,7 @@ using mini_battle.classes;
 
 Textflow.RollingText("Welcome to Mini Battle!\nWhat would you like to name your character?");
 string playerName;
+// Makes sure we have a valid character name that's not empty/null/too long //
 while (true)
 {
     playerName = Console.ReadLine() ?? "";
@@ -24,6 +25,7 @@ while (true)
 Textflow.ShowBorder(playerName, '~');
 Thread.Sleep(500);
 Textflow.RollingText("\nWelcome to the fight " + playerName + "!\nAre you ready to bonk a bad guy?! (y/n)");
+
 bool ready = false;
 int answerCount = 1;
 
@@ -104,6 +106,7 @@ while (weFighting)
 
     Textflow.ShowBorder($"{enemy.name} has suddenly appeared", '!');
 
+    // Decided that the player always goes first because i didn't want to implement a random starter //
     Textflow.RollingText($"I guess you can go first since ~{playerName}~ is such an incredible name!\n");
     while (true)
     {
