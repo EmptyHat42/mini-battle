@@ -4,7 +4,7 @@ namespace mini_battle.classes;
 
 public static class DiceRoll
 {
-    static Random dice = new Random();
+    private static Random dice = new Random();
 
     public static int rollTheDice()
     {
