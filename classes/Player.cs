@@ -43,7 +43,7 @@ public class Player : Character
 
                     if (currentHp == maxHp)
                     {
-                        Textflow.RollingText($"\n How silly of you! {name} is already full HP!\nDo you want to attack or heal?\n", 10);
+                        Textflow.RollingText($"\nHow silly of you! {name} is already full HP!\nDo you want to attack or heal?\n", 10);
                     }
                     else
                     {

@@ -124,7 +124,7 @@ while (weFighting)
         {
             Textflow.ShowBorder($"{playerName} has defeated {enemy.name}! You Win!", '+');
             Textflow.RollingText($"Holy shit I was sure {player.name} was gonna die! Damnit now I have to pay y", 25, false);
-            Textflow.Dots(700);
+            Textflow.Dots(500);
             Textflow.RollingText($"\nI mean... Congratulations on slaying {enemy.name}!!!\nWant to fight them again? Double or nothing? (y/n)\n");
             weFighting = TryAgain.Win();
             break;
